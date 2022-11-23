@@ -10,10 +10,7 @@ import com.enigmacamp.livecode3.utils.JpaUtil;
 import com.enigmacamp.livecode3.validation.Validation;
 import jakarta.persistence.EntityManager;
 
-import java.sql.SQLException;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class MasterMenu {
     private static final Scanner in = new Scanner(System.in);
@@ -22,8 +19,9 @@ public class MasterMenu {
     private static final TraineeRepo traineeRepo = new TraineeRepo(em);
     private static final UserCredentialRepo usrRepo = new UserCredentialRepo(em);
     private static final TraineeService traineeService = new TraineeService(traineeRepo, usrRepo);
+
     private static String selectMenu() {
-        String menu =   "\n=== main menu ===\n"
+        String menu = "\n=== main menu ===\n"
                 + "\n1. register\n"
                 + "2. activate user\n"
                 + "3. sign in\n"
@@ -35,12 +33,12 @@ public class MasterMenu {
         return in.nextLine();
     }
 
-    public static void run() throws SQLException {
+    public static void run() {
         System.out.println("=== yuk ngoding ===");
-        startMenu();
+        System.out.println(startMenu());
     }
 
-    private static void startMenu() throws SQLException {
+    private static String startMenu() {
         String selectedMenu = selectMenu();
 
         while (!isClosed) {
@@ -56,47 +54,48 @@ public class MasterMenu {
                     String nickname = in.nextLine();
                     System.out.print("enter address: ");
                     String address = in.nextLine();
-                    System.out.print("enter email: ");
-                    String email = in.nextLine();
+                    String email;
 
-                    Boolean isValidEmail = Validation.validateEmail(email);
+                    boolean isValidEmail;
+                    do {
+                        System.out.print("enter email: ");
+                        email = in.nextLine();
+                        isValidEmail = Validation.validateEmail(email);
 
-                    if (!isValidEmail) {
-                        System.out.println("not a valid email");
-                        startMenu();
-                    } else {
-                        System.out.print("enter phone number: ");
-                        String phoneNumber = in.nextLine();
-                        System.out.print("enter id card number: ");
-                        String idCardNumber = in.nextLine();
-                        System.out.print("enter last education (SMA, SMK, S1, S2, D3, D4): ");
-                        String lastEducation = in.nextLine();
+                        if(!isValidEmail) System.out.println("not a valid email");
+                    } while (!isValidEmail);
 
-                        Education enumLastEducation = null;
+                    System.out.print("enter phone number: ");
+                    String phoneNumber = in.nextLine();
+                    System.out.print("enter id card number: ");
+                    String idCardNumber = in.nextLine();
+                    System.out.print("enter last education (SMA, SMK, S1, S2, D3, D4): ");
+                    String lastEducation = in.nextLine();
 
-                        for (Education ed : Education.values()) {
-                            if(ed.toString().equalsIgnoreCase(lastEducation)) enumLastEducation = ed;
-                        }
+                    Education enumLastEducation = null;
 
-                        Trainee trainee = new Trainee();
-                        trainee.setFirstName(firstName);
-                        trainee.setLastName(lastName);
-                        trainee.setNickname(nickname);
-                        trainee.setAddress(address);
-                        trainee.setEmail(email);
-                        trainee.setPhoneNumber(phoneNumber);
-                        trainee.setIdCardNumber(idCardNumber);
-                        trainee.setLastEducation(enumLastEducation);
-
-                        UserCredential userCredential = new UserCredential();
-                        userCredential.setEmail(trainee.getEmail());
-                        userCredential.setPassword(null);
-                        userCredential.setIsActive(false);
-
-                        trainee.setUserCredential(userCredential);
-
-                        traineeService.register(trainee);
+                    for (Education ed : Education.values()) {
+                        if (ed.toString().equalsIgnoreCase(lastEducation)) enumLastEducation = ed;
                     }
+
+                    Trainee trainee = new Trainee();
+                    trainee.setFirstName(firstName);
+                    trainee.setLastName(lastName);
+                    trainee.setNickname(nickname);
+                    trainee.setAddress(address);
+                    trainee.setEmail(email);
+                    trainee.setPhoneNumber(phoneNumber);
+                    trainee.setIdCardNumber(idCardNumber);
+                    trainee.setLastEducation(enumLastEducation);
+
+                    UserCredential userCredential = new UserCredential();
+                    userCredential.setEmail(trainee.getEmail());
+                    userCredential.setPassword(null);
+                    userCredential.setIsActive(false);
+
+                    trainee.setUserCredential(userCredential);
+
+                    traineeService.register(trainee);
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("2")) {
@@ -133,7 +132,6 @@ public class MasterMenu {
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("0")) {
-                    System.out.println("\n=== goodbye ===");
                     em.close();
                     isClosed = true;
                     break;
@@ -146,5 +144,7 @@ public class MasterMenu {
                 startMenu();
             }
         }
+
+        return "=== goodbye ===";
     }
 }
