@@ -18,7 +18,7 @@ public class CourseSchedule {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "course_id", nullable = false)
-    private @Getter @Setter @ToString.Exclude Integer courseId;
+    private @Getter @Setter @ToString.Exclude Course course;
 
     @Column(name = "start_date")
     private @Getter @Setter Date startDate;

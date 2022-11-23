@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Table(name = "m_course")
 @ToString
@@ -31,4 +33,7 @@ public class Course {
 
     @Column(name = "passing_grade")
     private @Getter @Setter Integer passingGrade;
+
+    @OneToMany(mappedBy = "course")
+    private @Getter @Setter @ToString.Exclude List<CourseSchedule> courseSchedules;
 }
