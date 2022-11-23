@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b0ccc0a2-be3a-45c0-b14d-aaa08241007d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/validation/Validation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
