@@ -7,6 +7,7 @@ import com.enigmacamp.livecode3.repository.implementations.UserCredentialRepo;
 import com.enigmacamp.livecode3.service.ITraineeService;
 
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 public class TraineeService implements ITraineeService {
     private final TraineeRepo traineeRepo;
@@ -44,4 +45,6 @@ public class TraineeService implements ITraineeService {
     public void setUserPassword(UserCredential usr, String password) {
         usr.setPassword(password);
     }
+
+
 }
