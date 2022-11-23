@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0ccc0a2-be3a-45c0-b14d-aaa08241007d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/ITraineeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/implementations/TraineeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/IUserCredentialRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/implementations/UserCredentialRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/entity/Trainee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/entity/Trainee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/ITraineeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/ITraineeRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/entity/UserCredential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/entity/UserCredential.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/implementations/TraineeRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/repository/implementations/TraineeRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/implementations/TraineeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/implementations/TraineeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

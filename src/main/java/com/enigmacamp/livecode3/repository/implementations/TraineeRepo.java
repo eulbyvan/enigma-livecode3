@@ -6,8 +6,10 @@ import com.enigmacamp.livecode3.repository.ITraineeRepo;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
+import java.util.Optional;
+
 public class TraineeRepo implements ITraineeRepo {
-    private EntityManager em;
+    private final EntityManager em;
 
     public TraineeRepo(EntityManager entityManager) {
         this.em = entityManager;
@@ -30,6 +32,15 @@ public class TraineeRepo implements ITraineeRepo {
     public Trainee findByEmail(String email) {
         TypedQuery<Trainee> traineeTypedQuery = em.createNamedQuery("Trainee.findByEmail", Trainee.class);
         traineeTypedQuery.setParameter("email", email);
-        return traineeTypedQuery.getSingleResult();
+
+        Trainee trainee = new Trainee();
+
+        try {
+            trainee = traineeTypedQuery.getSingleResult();
+        } catch (Exception e) {
+            // empty catch so that trainee can be null
+        }
+
+        return trainee;
     }
 }

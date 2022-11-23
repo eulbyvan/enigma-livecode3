@@ -4,19 +4,23 @@ import com.enigmacamp.livecode3.constants.Education;
 import com.enigmacamp.livecode3.entity.Trainee;
 import com.enigmacamp.livecode3.entity.UserCredential;
 import com.enigmacamp.livecode3.repository.implementations.TraineeRepo;
+import com.enigmacamp.livecode3.repository.implementations.UserCredentialRepo;
 import com.enigmacamp.livecode3.service.implementations.TraineeService;
 import com.enigmacamp.livecode3.utils.JpaUtil;
 import jakarta.persistence.EntityManager;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class MasterMenu {
     private static final Scanner in = new Scanner(System.in);
     private static Boolean isClosed = false;
     private static final EntityManager em = JpaUtil.getEntityManager();
     private static final TraineeRepo traineeRepo = new TraineeRepo(em);
-    private static final TraineeService traineeService = new TraineeService(traineeRepo);
+    private static final UserCredentialRepo usrRepo = new UserCredentialRepo(em);
+    private static final TraineeService traineeService = new TraineeService(traineeRepo, usrRepo);
     private static String selectMenu() {
         String menu =   "\n=== main menu ===\n"
                 + "\n1. register\n"
@@ -89,9 +93,27 @@ public class MasterMenu {
                 } else if (selectedMenu.equalsIgnoreCase("2")) {
                     System.out.println("\n=== activate user ===");
 
-                    UserCredential usr = new UserCredential();
+                    System.out.print("enter registered email: ");
 
-                    traineeService.activateUser(usr);
+                    String registeredEmail = in.nextLine();
+
+                    UserCredential usr = traineeRepo.findByEmail(registeredEmail).getUserCredential();
+
+                    if (usr == null) {
+                        System.out.println("user not found");
+                    } else {
+                        System.out.print("user found, enter new password: ");
+                        String password = in.nextLine();
+
+                        usr.setPassword(password);
+                        usr.setActivationCode(UUID.randomUUID().toString());
+                        usr.setIsActive(true);
+
+                        traineeService.activateUser(usr);
+
+                        System.out.printf("your activation code: %s", usr.getActivationCode());
+                        System.out.println();
+                    }
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("3")) {

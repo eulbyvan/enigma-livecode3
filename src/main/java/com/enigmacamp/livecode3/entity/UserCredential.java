@@ -5,9 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "sys_user_credential")
-@ToString
 public class UserCredential {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,9 @@ public class UserCredential {
     private @Getter @Setter String email;
 
     private @Getter @Setter String password;
+
+    @Column(name = "activation_code")
+    private @Getter @Setter String activationCode;
 
     @Column(name = "is_active", nullable = false)
     private @Getter @Setter Boolean isActive;
