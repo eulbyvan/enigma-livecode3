@@ -6,6 +6,8 @@ import com.enigmacamp.livecode3.repository.implementations.TraineeRepo;
 import com.enigmacamp.livecode3.repository.implementations.UserCredentialRepo;
 import com.enigmacamp.livecode3.service.ITraineeService;
 
+import java.util.UUID;
+
 public class TraineeService implements ITraineeService {
     private final TraineeRepo traineeRepo;
     private final UserCredentialRepo usrRepo;
@@ -25,5 +27,21 @@ public class TraineeService implements ITraineeService {
     public void activateUser(UserCredential usr) {
         usrRepo.update(usr);
         System.out.printf("user %s has been activated successfully%n", usr.getEmail());
+    }
+
+    @Override
+    public UserCredential findUserByEmail(String email) {
+        return traineeRepo.findByEmail(email).getUserCredential();
+    }
+
+    @Override
+    public void generateActivationCode(UserCredential usr) {
+        usr.setActivationCode(UUID.randomUUID().toString());
+        usr.setIsActive(true);
+    }
+
+    @Override
+    public void setUserPassword(UserCredential usr, String password) {
+        usr.setPassword(password);
     }
 }

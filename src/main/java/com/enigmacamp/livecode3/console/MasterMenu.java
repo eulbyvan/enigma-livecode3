@@ -97,7 +97,7 @@ public class MasterMenu {
 
                     String registeredEmail = in.nextLine();
 
-                    UserCredential usr = traineeRepo.findByEmail(registeredEmail).getUserCredential();
+                    UserCredential usr = traineeService.findUserByEmail(registeredEmail);
 
                     if (usr == null) {
                         System.out.println("user not found");
@@ -105,14 +105,11 @@ public class MasterMenu {
                         System.out.print("user found, enter new password: ");
                         String password = in.nextLine();
 
-                        usr.setPassword(password);
-                        usr.setActivationCode(UUID.randomUUID().toString());
-                        usr.setIsActive(true);
-
+                        traineeService.setUserPassword(usr, password);
+                        traineeService.generateActivationCode(usr);
                         traineeService.activateUser(usr);
 
-                        System.out.printf("your activation code: %s", usr.getActivationCode());
-                        System.out.println();
+                        System.out.printf("your activation code: %s", usr.getActivationCode() + "\n");
                     }
 
                     startMenu();
