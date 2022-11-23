@@ -129,6 +129,20 @@ public class MasterMenu {
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("3")) {
                     System.out.println("\n=== sign in ===");
+                    System.out.print("enter registered email: ");
+                    String email = in.nextLine();
+                    System.out.print("enter password: ");
+                    String password = in.nextLine();
+
+                    Boolean isLoggedIn = traineeService.authUser(email, password);
+
+                    if (isLoggedIn) {
+                        Trainee trainee = traineeService.findTraineeByEmail(email);
+
+                        System.out.printf("welcome, %s", trainee.getFirstName());
+                    } else {
+                        System.out.println("wrong credential");
+                    }
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("0")) {

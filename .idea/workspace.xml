@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b0ccc0a2-be3a-45c0-b14d-aaa08241007d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/validation/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/validation/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/console/MasterMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/ITraineeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/ITraineeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/implementations/TraineeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/livecode3/service/implementations/TraineeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.enigmacamp.livecode3.App" />
       <module name="livecode3" />
       <extension name="coverage">
@@ -75,11 +76,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.App" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -5,6 +5,7 @@ import com.enigmacamp.livecode3.entity.UserCredential;
 import com.enigmacamp.livecode3.repository.implementations.TraineeRepo;
 import com.enigmacamp.livecode3.repository.implementations.UserCredentialRepo;
 import com.enigmacamp.livecode3.service.ITraineeService;
+import com.enigmacamp.livecode3.utils.PasswordEncrypt;
 
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -22,6 +23,11 @@ public class TraineeService implements ITraineeService {
     public void register(Trainee trainee) {
         traineeRepo.create(trainee);
         System.out.println("new trainee has been added successfully");
+    }
+
+    @Override
+    public Trainee findTraineeByEmail(String email) {
+        return traineeRepo.findByEmail(email);
     }
 
     @Override
@@ -44,6 +50,16 @@ public class TraineeService implements ITraineeService {
     @Override
     public void setUserPassword(UserCredential usr, String password) {
         usr.setPassword(password);
+    }
+
+    @Override
+    public Boolean authUser(String email, String password) {
+        UserCredential usr = traineeRepo.findByEmail(email).getUserCredential();
+
+        String dbEmail = usr.getEmail();
+        String dbPassword = PasswordEncrypt.startDecrypt(usr.getPassword());
+
+        return email.equalsIgnoreCase(dbEmail) && password.equals(dbPassword);
     }
 
 
