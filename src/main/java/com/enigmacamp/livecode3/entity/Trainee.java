@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@NamedQueries({
+        @NamedQuery(name = "Trainee.findByEmail", query = "SELECT t FROM Trainee t WHERE t.email = :email")
+})
+
 @Entity
 @Table(name = "sys_trainee")
 @ToString
@@ -38,6 +42,7 @@ public class Trainee {
     private @Getter
     @Setter String address;
 
+    @Column(unique = true)
     private @Getter
     @Setter String email;
 

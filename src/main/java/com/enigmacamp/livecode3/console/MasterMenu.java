@@ -4,6 +4,7 @@ import com.enigmacamp.livecode3.constants.Education;
 import com.enigmacamp.livecode3.entity.Trainee;
 import com.enigmacamp.livecode3.entity.UserCredential;
 import com.enigmacamp.livecode3.repository.implementations.TraineeRepo;
+import com.enigmacamp.livecode3.service.implementations.TraineeService;
 import com.enigmacamp.livecode3.utils.JpaUtil;
 import jakarta.persistence.EntityManager;
 
@@ -15,7 +16,7 @@ public class MasterMenu {
     private static Boolean isClosed = false;
     private static final EntityManager em = JpaUtil.getEntityManager();
     private static final TraineeRepo traineeRepo = new TraineeRepo(em);
-//    private static final Tra userService = new UserService(userRepo);
+    private static final TraineeService traineeService = new TraineeService(traineeRepo);
     private static String selectMenu() {
         String menu =   "\n=== main menu ===\n"
                 + "\n1. register\n"
@@ -82,11 +83,15 @@ public class MasterMenu {
 
                     trainee.setUserCredential(userCredential);
 
-                    traineeRepo.create(trainee);
+                    traineeService.register(trainee);
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("2")) {
                     System.out.println("\n=== activate user ===");
+
+                    UserCredential usr = new UserCredential();
+
+                    traineeService.activateUser(usr);
 
                     startMenu();
                 } else if (selectedMenu.equalsIgnoreCase("3")) {

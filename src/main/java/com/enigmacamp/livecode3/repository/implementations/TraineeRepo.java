@@ -1,8 +1,10 @@
 package com.enigmacamp.livecode3.repository.implementations;
 
 import com.enigmacamp.livecode3.entity.Trainee;
+import com.enigmacamp.livecode3.entity.UserCredential;
 import com.enigmacamp.livecode3.repository.ITraineeRepo;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 public class TraineeRepo implements ITraineeRepo {
     private EntityManager em;
@@ -25,7 +27,9 @@ public class TraineeRepo implements ITraineeRepo {
     }
 
     @Override
-    public Trainee findOne(int id) {
-        return em.find(Trainee.class, id);
+    public Trainee findByEmail(String email) {
+        TypedQuery<Trainee> traineeTypedQuery = em.createNamedQuery("Trainee.findByEmail", Trainee.class);
+        traineeTypedQuery.setParameter("email", email);
+        return traineeTypedQuery.getSingleResult();
     }
 }
