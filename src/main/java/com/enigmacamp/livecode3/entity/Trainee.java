@@ -11,7 +11,7 @@ import lombok.ToString;
 })
 
 @Entity
-@Table(name = "sys_trainee")
+@Table(name = "m_trainee")
 @ToString
 public class Trainee {
 //    o Nama depan
@@ -54,9 +54,9 @@ public class Trainee {
     private @Getter
     @Setter String idCardNumber;
 
-    @Column(name = "last_education")
+    @Column(name = "education")
     private @Getter
-    @Setter Education lastEducation;
+    @Setter Education education;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_credential_id")

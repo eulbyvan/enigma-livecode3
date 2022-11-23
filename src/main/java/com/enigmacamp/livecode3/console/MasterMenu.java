@@ -86,7 +86,7 @@ public class MasterMenu {
                     trainee.setEmail(email);
                     trainee.setPhoneNumber(phoneNumber);
                     trainee.setIdCardNumber(idCardNumber);
-                    trainee.setLastEducation(enumLastEducation);
+                    trainee.setEducation(enumLastEducation);
 
                     UserCredential userCredential = new UserCredential();
                     userCredential.setEmail(trainee.getEmail());
