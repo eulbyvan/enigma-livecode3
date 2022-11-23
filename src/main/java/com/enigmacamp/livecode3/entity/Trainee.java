@@ -1,8 +1,6 @@
 package com.enigmacamp.livecode3.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,14 +19,43 @@ public class Trainee {
 //    o Pendidikan terakhir (SMA/SMK, S1, S2, D3, D4)
 
     @Id
-    private @Getter @Setter Integer id;
-    private @Getter @Setter String firstName;
-    private @Getter @Setter String lastName;
-    private @Getter @Setter String nickName;
-    private @Getter @Setter String address;
-    private @Getter @Setter String email;
-    private @Getter @Setter String phoneNumber;
-    private @Getter @Setter String idCardNumber;
-    private @Getter @Setter String lastEducation;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private @Getter
+    @Setter Integer id;
+
+    @Column(name = "first_name")
+    private @Getter
+    @Setter String firstName;
+
+    @Column(name = "last_name")
+    private @Getter
+    @Setter String lastName;
+
+    @Column(name = "nick_name")
+    private @Getter
+    @Setter String nickName;
+
+    private @Getter
+    @Setter String address;
+
+    private @Getter
+    @Setter String email;
+
+    @Column(name = "phone_number")
+    private @Getter
+    @Setter String phoneNumber;
+
+    @Column(name = "id_card_number")
+    private @Getter
+    @Setter String idCardNumber;
+
+    @Column(name = "last_education")
+    private @Getter
+    @Setter String lastEducation;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_credential_id")
+    private @Getter
+    @Setter UserCredential userCredential;
 
 }
