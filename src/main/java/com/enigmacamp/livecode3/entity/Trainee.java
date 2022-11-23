@@ -1,5 +1,6 @@
 package com.enigmacamp.livecode3.entity;
 
+import com.enigmacamp.livecode3.constants.Education;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,9 +32,8 @@ public class Trainee {
     private @Getter
     @Setter String lastName;
 
-    @Column(name = "nick_name")
     private @Getter
-    @Setter String nickName;
+    @Setter String nickname;
 
     private @Getter
     @Setter String address;
@@ -51,7 +51,7 @@ public class Trainee {
 
     @Column(name = "last_education")
     private @Getter
-    @Setter String lastEducation;
+    @Setter Education lastEducation;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_credential_id")
